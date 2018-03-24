@@ -65,15 +65,53 @@ return [
     */
 
     'providers' => [
+        // Simple example (suitable for most cases)
+//        'simple' => [
+//            'driver' => 'simple',
+//            'model' => App\User::class
+//        ],
+//
+//        // Advanced example
+//        'advanced' => [
+//            'driver' => 'simple',
+//            'model' => App\User::class,
+
+//            // Query modifiers
+//            'only' => [
+//                // only users with email = example@email.com
+//                'email' => 'example@email.com',
+//                // only users with ID 1, 2 or 3
+//                'id' => [1, 2, 3]
+//            ],
+//
+//            // Any model scope
+//            'scope' => 'scopeName',
+//            // ...or
+//            'scope' => [
+//                'scopeName',
+//                'scopeWithArguments' => ['arg1', 'arg2']
+//            ],
+
+            // Cache prefix can be configured if you want to use multiple independent providers.
+            // This will allow clients to have multiple tokens (one per each unique prefix).
+            // On the other hand, you can restrict users to have a sinlgle token by providing same prefix.
+            // Default: no prefix
+            // IMPORTANT: this prefix will will be appended to the `simple_tokens.cache_prefix` config entry.
+//            'cache_prefix' => '',
+//
+//            // Token expiration time in minutes.
+//            // You can overwrite default value from the `simple_tokens.token_ttl` config entry here.
+//            'token_ttl' => 60
+//        ]
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+//         'users' => [
+//             'driver' => 'database',
+//             'table' => 'users',
+//         ],
     ],
 
     /*

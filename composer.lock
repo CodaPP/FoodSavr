@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3859746c487d2976865c97fb389a99b7",
-    "content-hash": "fd8beb15f5bab880e713afef56d70357",
+    "hash": "e3c206d00262f86e7b4cbdd69e58eb67",
+    "content-hash": "b457a859494e8145d9debe492329daa9",
     "packages": [
         {
             "name": "codecasts/laravel-jwt",
@@ -1402,6 +1402,55 @@
                 "psr-3"
             ],
             "time": "2017-06-19 01:22:40"
+        },
+        {
+            "name": "mr-timofey/laravel-simple-tokens",
+            "version": "0.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mrTimofey/laravel-simple-tokens.git",
+                "reference": "e2270d1dfb96f5cab8d0abd27da8f3c4f62de92e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mrTimofey/laravel-simple-tokens/zipball/e2270d1dfb96f5cab8d0abd27da8f3c4f62de92e",
+                "reference": "e2270d1dfb96f5cab8d0abd27da8f3c4f62de92e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "MrTimofey\\LaravelSimpleTokens\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "MrTimofey\\LaravelSimpleTokens\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Timofey",
+                    "email": "timoxa17@gmail.com"
+                }
+            ],
+            "description": "Simple token and cache based user authentication and authorization",
+            "keywords": [
+                "Simple",
+                "auth",
+                "laravel",
+                "token"
+            ],
+            "time": "2018-01-29 08:38:18"
         },
         {
             "name": "nesbot/carbon",
