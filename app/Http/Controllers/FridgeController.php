@@ -180,7 +180,7 @@ class FridgeController extends Controller
             ->select('donations.*', 'products.Manufacturer', 'products.Name', 'products.Photo')
             ->where('OwnerID', '=', Auth::user()->id)
             ->leftJoin('products', 'donations.Barcode', '=', 'products.Barcode')
-            //->leftJoin('users', 'donations.ClaimedBy', '=', 'users.id')
+            ->leftJoin('users', 'donations.ClaimedBy', '=', 'users.id')
             ->get();
 
         $response = [
