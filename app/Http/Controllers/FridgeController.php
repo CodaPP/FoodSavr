@@ -116,10 +116,10 @@ class FridgeController extends Controller
 
         $product = DB::table('fridge')->where('ID', '=', $id);
 
-        if ($product->first()->Quantity < $quantity) $quantity = $product->first()->Quantity;
-
         if ($product->exists()) {
+
             $product = $product->first();
+            if ($product->Quantity < $quantity) $quantity = $product->Quantity;
 
             DB::table('donations')->insert([
                     'OwnerID' => $product->OwnerID,
@@ -131,8 +131,14 @@ class FridgeController extends Controller
                 ]
             );
 
-            if ($product->Quantity - $quantity == 0) {
+            if ($product->Quantity - $quantity <= 0) {
                 DB::table('fridge')->where('ID', '=', $id)->delete();
+            } else {
+                DB::table('fridge')
+                    ->where([
+                        ['ID', '=', $id]
+                    ])
+                    ->update(['Quantity' => $product->Quantity - $quantity]);
             }
         } else {
             return json_encode([
