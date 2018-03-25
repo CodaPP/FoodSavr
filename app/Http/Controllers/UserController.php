@@ -63,7 +63,7 @@ class UserController extends Controller
     }
 
     public function getRecipes() {
-        $recipes = DB::table('recipes')->get();
+        $recipes = DB::table('Recipes')->get();
 
         $response = [];
 
@@ -76,6 +76,6 @@ class UserController extends Controller
             ]);
         }
 
-        return $response;
+        return json_encode($response);
     }
 }
