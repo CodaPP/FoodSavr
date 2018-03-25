@@ -16,6 +16,7 @@ class VerifyCsrfToken extends Middleware
         "logout",
         "register",
         "/user/addFridgeItems",
-        "/products/updateInfo"
+        "/products/updateInfo",
+        "/user/sendToken"
     ];
 }

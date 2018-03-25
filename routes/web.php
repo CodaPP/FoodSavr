@@ -23,4 +23,8 @@ Route::post('/user/addFridgeItems', 'FridgeController@addUserItems');
 
 Route::post('/user/donateItems', 'FridgeController@donateItems');
 
+Route::post('/user/sendToken', 'UserController@sendToken');
+
+Route::get('/user/getToken', 'UserController@getToken');
+
 Route::post('/products/updateInfo', 'ProductController@updateInfo');
