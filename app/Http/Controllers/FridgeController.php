@@ -20,6 +20,7 @@ class FridgeController extends Controller
         }
 
         $fridgeItems = DB::table('fridge')
+            ->select('fridge.*', 'products.Manufacturer', 'products.Name', 'products.Photo')
             ->where('OwnerID', '=', Auth::user()->id)
             ->join('products', 'fridge.Barcode', '=', 'products.Barcode')
             ->get();
