@@ -114,7 +114,7 @@ class FridgeController extends Controller
         $id = Input::get('id');
         $quantity = Input::get('quantity');
 
-        $product = DB::table('fridge')->where('ID', '=', $id());
+        $product = DB::table('fridge')->where('ID', '=', $id);
 
         if ($product->Quantity < $quantity) $quantity = $product->Quantity;
 
