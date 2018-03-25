@@ -121,7 +121,11 @@ class FridgeController extends Controller
             $product = $product->first();
             if ($product->Quantity < $quantity) $quantity = $product->Quantity;
 
-            $productDonated = DB::table('donations')->where('ID', '=', $id);
+            $productDonated = DB::table('donations')->where([
+                ['Barcode', '=', $product->Barcode],
+                ['OwnerID', '=', Auth::user()->id]
+            ]);
+
             if ($productDonated->exists()) {
                 DB::table('donations')
                     ->where([
