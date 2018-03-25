@@ -121,15 +121,25 @@ class FridgeController extends Controller
             $product = $product->first();
             if ($product->Quantity < $quantity) $quantity = $product->Quantity;
 
-            DB::table('donations')->insert([
-                    'OwnerID' => $product->OwnerID,
-                    'Barcode' => $product->Barcode,
-                    'UseBy' => $product->UseBy,
-                    'BestBefore' => $product->BestBefore,
-                    'Quantity' => $quantity,
-                    'ClaimedBy' => null
-                ]
-            );
+            $productDonated = DB::table('donations')->where('ID', '=', $id);
+            if ($productDonated->exists()) {
+                DB::table('donations')
+                    ->where([
+                        ['Barcode', '=', $product->Barcode],
+                        ['OwnerID', '=', Auth::user()->id]
+                    ])
+                    ->update(['Quantity' => $product->Quantity + $quantity]);
+            } else {
+                DB::table('donations')->insert([
+                        'OwnerID' => $product->OwnerID,
+                        'Barcode' => $product->Barcode,
+                        'UseBy' => $product->UseBy,
+                        'BestBefore' => $product->BestBefore,
+                        'Quantity' => $quantity,
+                        'ClaimedBy' => null
+                    ]
+                );
+            }
 
             if ($product->Quantity - $quantity <= 0) {
                 DB::table('fridge')->where('ID', '=', $id)->delete();
