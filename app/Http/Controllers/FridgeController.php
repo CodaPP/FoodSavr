@@ -120,9 +120,9 @@ class FridgeController extends Controller
 
         if ($product->exists()) {
             $product = $product->first();
-            
+
             DB::table('donations')->insert([
-                    'OwnerID' => $product->OwnerId,
+                    'OwnerID' => $product->OwnerID,
                     'Barcode' => $product->Barcode,
                     'UseBy' => $product->UseBy,
                     'BestBefore' => $product->BestBefore,
