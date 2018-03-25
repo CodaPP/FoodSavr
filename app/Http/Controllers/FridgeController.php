@@ -177,8 +177,9 @@ class FridgeController extends Controller
         }
 
         $donatedItems = DB::table('donations')
+            ->select('donations.*', 'products.Manufacturer', 'products.Name', 'products.Photo')
             ->where('OwnerID', '=', Auth::user()->id)
-            ->join('products', 'donations.Barcode', '=', 'products.Barcode')
+            ->leftJoin('products', 'donations.Barcode', '=', 'products.Barcode')
             ->join('users', 'donations.ClaimedBy', '=', 'users.id')
             ->get();
 
