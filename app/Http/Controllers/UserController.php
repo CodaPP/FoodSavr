@@ -19,7 +19,6 @@ class UserController extends Controller
             ]);
         }
 
-        $uID = Input::get('uid');
         $token = Input::get('token');
 
         $userToken = DB::table('FireBaseTokens')

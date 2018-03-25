@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::Routes();
 
 Route::get('/user/getFridgeItems', 'FridgeController@getUserItems');
@@ -22,6 +18,8 @@ Route::get('/user/getFridgeItems', 'FridgeController@getUserItems');
 Route::post('/user/addFridgeItems', 'FridgeController@addUserItems');
 
 Route::post('/user/donateItems', 'FridgeController@donateItems');
+
+Route::get('/user/getDonatedItems', 'FridgeController@getDonatedItems');
 
 Route::post('/user/sendToken', 'UserController@sendToken');
 

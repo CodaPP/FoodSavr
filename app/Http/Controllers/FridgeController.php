@@ -144,5 +144,45 @@ class FridgeController extends Controller
         ]);
     }
 
+    public function getDonatedItems() {
+
+        if (!Auth::check()) {
+            return [
+                "STATUS" => false,
+                "ERROR" => "You are not logged in."
+            ];
+        }
+
+        $donatedItems = DB::table('donations')
+            ->where('OwnerID', '=', Auth::user()->id)
+            ->join('products', 'donations.Barcode', '=', 'products.Barcode')
+            ->join('users', 'donations.ClaimedBy', '=', 'users.id')
+            ->get();
+
+        $response = [
+            "STATUS" => true
+        ];
+
+        $response["products"] = [];
+
+        Carbon::setLocale('ro');
+
+        foreach ($donatedItems as $item) {
+            array_push($response["products"], [
+                "ID" => $item->ID,
+                "Barcode" => $item->Barcode,
+                "Manufacturer" => $item->Manufacturer,
+                "Name" => $item->Name,
+                "UseBy" => ($item->UseBy != null) ? Carbon::createFromTimestamp($item->UseBy)->diffForHumans(Carbon::now()) : null,
+                "BestBefore" => ($item->BestBefore != null) ? Carbon::createFromTimestamp($item->BestBefore)->diffForHumans(Carbon::now()) : null,
+                "Quantity" => $item->Quantity,
+                "Photo" => $item->Photo,
+                "ClaimedBy" => $item->name
+            ]);
+        }
+
+        return json_encode($response);
+    }
+
 
 }
