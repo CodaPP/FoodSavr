@@ -17,4 +17,10 @@ Route::get('/', function () {
 
 Auth::Routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/user/getFridgeItems', 'FridgeController@getUserItems');
+
+Route::post('/user/addFridgeItems', 'FridgeController@addUserItems');
+
+Route::post('/user/donateItems', 'FridgeController@donateItems');
+
+Route::post('/products/updateInfo', 'ProductController@updateInfo');

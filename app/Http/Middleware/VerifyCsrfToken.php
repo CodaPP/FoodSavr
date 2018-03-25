@@ -14,6 +14,8 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
         "login",
         "logout",
-        "register"
+        "register",
+        "/user/addFridgeItems",
+        "/products/updateInfo"
     ];
 }
