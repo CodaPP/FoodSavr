@@ -61,4 +61,21 @@ class UserController extends Controller
             ]);
         }
     }
+
+    public function getRecipes() {
+        $recipes = DB::table('recipes')->get();
+
+        $response = [];
+
+        foreach ($recipes as $recipe) {
+            array_push($response, [
+               "ID" => $recipe->ID,
+               "Name" => $recipe->Name,
+               "Ingredients" => explode("#", $recipe->Ingredients),
+               "Photo" => $recipe->Photo
+            ]);
+        }
+
+        return $response;
+    }
 }

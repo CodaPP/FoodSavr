@@ -26,3 +26,5 @@ Route::post('/user/sendToken', 'UserController@sendToken');
 Route::get('/user/getToken', 'UserController@getToken');
 
 Route::post('/products/updateInfo', 'ProductController@updateInfo');
+
+Route::get('/getRecipes', 'UserController@getRecipes');
