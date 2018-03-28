@@ -28,3 +28,5 @@ Route::get('/user/getToken', 'UserController@getToken');
 Route::post('/products/updateInfo', 'ProductController@updateInfo');
 
 Route::get('/getRecipes', 'UserController@getRecipes');
+
+Route::get('/image/{file}', 'ImageController@getPhoto');
