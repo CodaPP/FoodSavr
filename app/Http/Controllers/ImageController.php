@@ -15,7 +15,7 @@ use Auth;
 
 class ImageController extends Controller
 {
-    public function getPhoto(Request $photo) {
+    public function getPhoto(Request $request, $photo) {
         if (!Auth::check()) {
             return [
                 "STATUS" => false,
@@ -25,6 +25,9 @@ class ImageController extends Controller
 
         $pathToFile = "/var/www/html/FoodSavr/resources/assets/img/" . $photo;
 
-        return response()->file($pathToFile);
+	//echo "Getting file: " . $photo;
+	$headers = ['Content-Type' => 'image/png'];
+	
+        return response()->file($pathToFile, $headers);
     }
 }
