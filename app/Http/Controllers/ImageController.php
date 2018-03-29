@@ -25,8 +25,8 @@ class ImageController extends Controller
 
         $pathToFile = "/var/www/html/FoodSavr/resources/assets/img/" . $photo;
 
-	//echo "Getting file: " . $photo;
-	$headers = ['Content-Type' => 'image/png'];
+	    //echo "Getting file: " . $photo;
+	    $headers = ['Content-Type' => 'image/jpg'];
 	
         return response()->file($pathToFile, $headers);
     }
